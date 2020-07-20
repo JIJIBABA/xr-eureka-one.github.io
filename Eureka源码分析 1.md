@@ -218,10 +218,15 @@ public void evict(long additionalLeaseMs) {
 //类EurekaServerInitializerConfiguration
 
 //针对服务下线我们还可以通过邮件监控
-  public void listen(EurekaInstanceCanceledEvent event) {
-        //发送邮件 进行提醒
 
+@Component
+public class CancelEvent {
+
+    @EventListener
+    public void listen(EurekaInstanceCanceledEvent event) {
+        System.out.println("下线："+event.getServerId());
     }
+}
 
 ```
 
